@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "workflows_module_schema_version": "1.0.0"
+  },
+  "fields": [
+    {
+      "id": "api_key",
+      "type": "string",
+      "label": "API Key",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "id": "platform",
+      "type": "string",
+      "label": "Platform",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "id": "post_type",
+      "type": "string",
+      "label": "Post Type",
+      "validation": {
+        "required": true
+      }
+    }
+  ],
+  "ui_options": {
+    "ui_order": ["api_key", "platform", "post_type"]
+  }
+}

@@ -1,6 +1,11 @@
 from workflows_cdk import Response, Request
 from flask import request as flask_request
 from main import router
+import requests
+
+# @router.route("/ping", methods=["GET"])
+# def ping():
+#     return "pong"
 
 @router.route("/execute", methods=["GET", "POST"])
 def execute():
@@ -12,6 +17,22 @@ def execute():
     # The data object of request.data will contain all of the fields filled in the form and defined in the schema.json file.
     data = request.data
 
+    platform = data.get("platform")
+    post_type = data.get("post_type")
+    api_key = data.get("api_key")
+
+    headers = {
+        "Authorization": f"Bearer {api_key}"
+    }
+    url = "https://fakestoreapi.com/products"  # Example URL, replace with actual API endpoint
+
+    if platform == "instagram":
+        url = url
+    elif platform == "facebook":
+        url = url
+
+    response = requests.get(url, headers=headers)
+    response = response.json()
     # Your logic here
     # Here you can add your logic to execute the action which may consist of, for example:
     # - calling an API
@@ -20,7 +41,7 @@ def execute():
     # - validating data
     
 
-    output = []
+    output = response
 
     return Response(data=output, metadata={"affected_rows": len(output)})
 
