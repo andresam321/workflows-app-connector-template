@@ -26,9 +26,31 @@
       "validation": {
         "required": true
       }
+    },
+    {
+      "id":"user",
+      "type": "string",
+      "label": "User",
+      "validation": {
+        "required": true
+      },
+      "choices": {
+        "values": []
+      },
+      "content": {
+        "type": ["managed"],
+        "content_objects":[
+          {
+            "id": "users"
+          }
+        ]
+      },
+      "ui_options":{
+        "ui_widget": "SelectWidget"
+      }
     }
   ],
   "ui_options": {
-    "ui_order": ["api_key", "platform", "post_type"]
+    "ui_order": ["api_key", "platform", "post_type", "user"]
   }
 }

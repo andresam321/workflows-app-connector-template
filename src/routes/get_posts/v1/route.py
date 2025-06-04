@@ -69,7 +69,7 @@ def content():
                 form_field_name_2: value2
             content_object_names:
                 [
-                    {   "id": "content_object_name_1"   }
+                    {   "id": "users"   }
                 ]
         credentials:
             connection_data:
@@ -79,7 +79,7 @@ def content():
         {
             "content_objects": [
                 {
-                    "content_object_name": "content_object_name_1",
+                    "content_object_name": "users",
                     "data": [{"value": "value1", "label": "label1"}]
                 },
                 ...
@@ -98,26 +98,18 @@ def content():
         content_object_names = [obj.get("id") for obj in content_object_names if "id" in obj]
 
     content_objects = [] # this is the list of content objects that will be returned to the frontend
+    print(content_object_names, type(content_object_names))
 
     for content_object_name in content_object_names:
-        if content_object_name == "requested_content_object_1":
+        if content_object_name == "users":
             # logic here
+            users = requests.get("https://fakestoreapi.com/users")
+            users = users.json()
             data = [
-                {"value": "value1", "label": "label1"},
-                {"value": "value2", "label": "label2"}
+                {"value": str(user["id"]), "label": str(user["username"])} for user in users
             ]
             content_objects.append({
-                    "content_object_name": "requested_content_object_1",
-                    "data": data
-                })
-        elif content_object_name == "requested_content_object_2":
-            # logic here
-            data = [
-                {"value": "value1", "label": "label1"},
-                {"value": "value2", "label": "label2"}
-            ]
-            content_objects.append({
-                    "content_object_name": "requested_content_object_2",
+                    "content_object_name": "users",
                     "data": data
                 })
     
