@@ -27,7 +27,7 @@
         "required": true
       }
     },
-    {
+    { 
       "id":"user",
       "type": "string",
       "label": "User",
@@ -48,9 +48,52 @@
       "ui_options":{
         "ui_widget": "SelectWidget"
       }
-    }
+    },
+    {
+  "id": "city",
+  "type": "string",
+  "label": "City",
+  "validation": { "required": true },
+  "choices": { "values": [] },
+  "content": {
+    "type": ["managed"],
+    "content_objects": [{ "id": "city" }]
+  },
+  "ui_options": {
+    "ui_widget": "SelectWidget"
+  }
+},
+{
+  "id": "street",
+  "type": "string",
+  "label": "Street",
+  "validation": { "required": true },
+  "choices": { "values": [] },
+  "content": {
+    "type": ["managed"],
+    "content_objects": [{ "id": "street" }]
+  },
+  "ui_options": {
+    "ui_widget": "SelectWidget"
+  }
+},
+{
+  "id": "number",
+  "type": "string",
+  "label": "Street Number",
+  "validation": { "required": true },
+  "choices": { "values": [] },
+  "content": {
+    "type": ["managed"],
+    "content_objects": [{ "id": "number" }]
+  },
+  "ui_options": {
+    "ui_widget": "SelectWidget"
+  }
+}
+
   ],
   "ui_options": {
-    "ui_order": ["api_key", "platform", "post_type", "user"]
+    "ui_order": ["api_key", "platform", "post_type", "user", "city", "street", "number"]
   }
 }
